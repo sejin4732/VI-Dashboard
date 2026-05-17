@@ -1,4 +1,4 @@
-# VICT 개발/동기화 안내
+# VICT Git 동기화 안내
 
 ## 아주 짧게
 
@@ -10,38 +10,27 @@
 클라우드PC:
 - `git pull`
 
+## 파일 위치
+
+- Git 관련 문서/스크립트는 `_GIT_SYNC` 폴더에서 관리합니다.
+- 단, `.gitignore`는 Git이 루트에서 읽어야 하므로 프로젝트 루트에 그대로 둡니다.
+
 ## 기본 원칙
 
 - Git에는 코드만 올립니다.
 - `parquet`, `Excel`, `cache`, `outputs`, `logs`, `bom_lake`, 배포 폴더는 Git에 올리지 않습니다.
 - 클라우드 PC 데이터는 `D:/VICT_DATA` 아래에 유지합니다.
-- 개인 PC에서는 코드 수정 후 `git push`만 하면 됩니다.
-- 클라우드 PC에서는 `git pull` 후 바로 테스트하면 됩니다.
 
-## 개인 PC에서 수정 후 올리기
-
-1. `git status`
-2. `git add .`
-3. `git commit -m "수정내용"`
-4. `git push`
-
-최초 1회는 아래 스크립트로 Git 초기 구성을 할 수 있습니다.
+## 개인 PC에서 최초 1회
 
 ```powershell
-.\setup_git_personal_pc.ps1
+.\_GIT_SYNC\setup_git_personal_pc.ps1
 ```
 
 ## 클라우드 PC에서 최신 코드 받기
 
-1. 아래 스크립트 실행
-
 ```powershell
-.\update_cloud_pc.ps1
-```
-
-2. 그 다음 GUI 실행
-
-```powershell
+.\_GIT_SYNC\update_cloud_pc.ps1
 python vi_report_gui.py
 ```
 
@@ -53,4 +42,4 @@ python vi_report_gui.py
 - `D:/VICT_DATA/outputs`
 - `D:/VICT_DATA/logs`
 
-`update_cloud_pc.ps1`가 `config.json`이 없으면 자동으로 만들어 줍니다.
+`_GIT_SYNC\update_cloud_pc.ps1`가 `config.json`이 없으면 자동으로 만들어 줍니다.

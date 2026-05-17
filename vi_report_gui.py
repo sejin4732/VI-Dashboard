@@ -358,6 +358,149 @@ TEMPLATE_COLUMN_GUIDES = {
     },
 }
 
+TEMPLATE_HEADER_LABELS["BasePN_Recommendation_Request"].update(
+    {
+        "vi_item_name": "VI 아이템명",
+        "enabled": "사용 여부",
+        "subsidiary": "대상 법인",
+        "base_part_no": "기준 품번(Base P/N)",
+        "new_part_no": "적용 New P/N",
+        "model_type": "모델 타입(C/O,H/P)",
+        "indoor_tool": "실내기 툴(SJ,SK,S0,SA)",
+        "desc_match_mode": "Desc. 키워드 매칭방식",
+        "desc_contains_any": "Desc. 키워드",
+        "spec_contains_any": "Spec. 키워드(OR)",
+        "parent_assy_desc_contains_any": "상위 ASSY Desc. 키워드",
+        "note": "비고",
+    }
+)
+
+TEMPLATE_HEADER_LABELS["BasePN_Recommendation_Result"] = {
+    "model_suffix": "모델명",
+    "subsidiary": "법인",
+    "parent_assy_part_no": "상위 ASSY P/N",
+    "parent_assy_desc_text": "상위 ASSY Desc",
+    "ancestor_desc_path": "상위 ASSY 경로",
+    "recommended_base_part_no": "추천 Base P/N",
+    "recommended_desc": "Base P/N Desc",
+    "confirmed_new_part_no": "확정 New P/N",
+    "user_confirmed": "사용 여부",
+    "expected_vi_amount_usd": "예상 VI 금액[$]",
+    "vi_item_name": "VI 아이템",
+    "base_bom_total_model_count": "Base BOM전체 모델수",
+    "item_target_model_count": "VI대상 모델 수",
+    "recommended_model_count": "Base P/N 사용 모델 수",
+    "recommended_model_share_pct": "Base P/N 사용 비중",
+    "recommendation_reason": "추천 근거",
+    "recommended_subsidiaries": "사용 중인 법인",
+    "bom_subsidiary_model_count_detail": "원본 BOM 법인별 모델 수",
+    "item_target_subsidiary_model_count_detail": "대상 법인별 모델 수",
+    "recommended_model_share_formula": "추천 비중 계산식",
+    "recommended_subsidiary_share_detail": "법인별 사용 비중",
+    "base_pn_subsidiaries": "법인 목록",
+    "base_pn_models": "모델 목록",
+    "base_part_no": "요청 Base P/N",
+    "new_part_no": "요청 New P/N",
+    "desc_match_mode": "Desc. 키워드 매칭방식",
+    "desc_contains_any": "Desc. 키워드",
+    "spec_contains_any": "Spec. 키워드(OR)",
+    "parent_assy_desc_contains_any": "상위 ASSY Desc. 키워드",
+    "model_type": "모델 타입(C/O,H/P)",
+    "indoor_tool": "실내기 툴(SJ,SK,S0,SA)",
+    "note": "비고",
+}
+
+TEMPLATE_HEADER_LABELS["Volume"].update(
+    {
+        "month": "생산월(YYYY-MM)",
+        "subsidiary": "법인",
+        "model_suffix": "모델명",
+        "production_qty": "생산수량",
+    }
+)
+
+TEMPLATE_COLUMN_GUIDES["BasePN_Recommendation_Request"] = {
+    "vi_item_name": {
+        "input_type": "필수 입력",
+        "owner": "사용자",
+        "description": "추천을 구분할 VI 아이템명을 입력합니다. vi_item_id는 내부에서 자동 생성됩니다.",
+    },
+    "enabled": {
+        "input_type": "선택 입력",
+        "owner": "사용자",
+        "description": "비우면 Y로 처리됩니다.",
+    },
+    "subsidiary": {
+        "input_type": "조건 입력",
+        "owner": "사용자",
+        "description": "추천 대상을 특정 법인으로 제한할 때 입력합니다. 비우면 전체입니다.",
+    },
+    "base_part_no": {
+        "input_type": "필수 입력",
+        "owner": "사용자",
+        "description": "기준 Base P/N을 입력합니다.",
+    },
+    "new_part_no": {
+        "input_type": "필수 입력",
+        "owner": "사용자",
+        "description": "적용할 New P/N을 입력합니다.",
+    },
+    "model_type": {
+        "input_type": "조건 입력",
+        "owner": "사용자",
+        "description": "C/O 또는 H/P 조건입니다.",
+    },
+    "indoor_tool": {
+        "input_type": "조건 입력",
+        "owner": "사용자",
+        "description": "SJ, SK, S0, SA 조건입니다.",
+    },
+    "desc_match_mode": {
+        "input_type": "선택 입력",
+        "owner": "사용자",
+        "description": "Desc/Spec/상위 ASSY 키워드의 매칭 방식입니다. 비우면 OR입니다.",
+    },
+    "desc_contains_any": {
+        "input_type": "조건 입력",
+        "owner": "사용자",
+        "description": "대상 설명 키워드입니다. 쉼표로 여러 값을 넣을 수 있습니다.",
+    },
+    "spec_contains_any": {
+        "input_type": "조건 입력",
+        "owner": "사용자",
+        "description": "Spec 키워드입니다.",
+    },
+    "parent_assy_desc_contains_any": {
+        "input_type": "조건 입력",
+        "owner": "사용자",
+        "description": "상위 ASSY Desc 키워드입니다.",
+    },
+    "note": {
+        "input_type": "선택 입력",
+        "owner": "사용자",
+        "description": "검토 메모입니다.",
+    },
+}
+
+TEMPLATE_COLUMN_GUIDES["BasePN_Recommendation_Result"] = {
+    "model_suffix": {"input_type": "자동 생성", "owner": "시스템", "description": "모델 기준으로 한 행씩 생성됩니다."},
+    "subsidiary": {"input_type": "자동 생성", "owner": "시스템", "description": "추천 대상 법인입니다."},
+    "parent_assy_part_no": {"input_type": "자동 생성", "owner": "시스템", "description": "가장 가까운 상위 ASSY P/N입니다."},
+    "parent_assy_desc_text": {"input_type": "자동 생성", "owner": "시스템", "description": "가장 가까운 상위 ASSY Desc입니다."},
+    "ancestor_desc_path": {"input_type": "자동 생성", "owner": "시스템", "description": "가능하면 상위 ASSY 경로를 보여줍니다."},
+    "recommended_base_part_no": {"input_type": "자동 생성", "owner": "시스템", "description": "시스템 추천 Base P/N입니다."},
+    "recommended_desc": {"input_type": "자동 생성", "owner": "시스템", "description": "추천 Base P/N 설명입니다."},
+    "confirmed_new_part_no": {"input_type": "검토 입력", "owner": "사용자", "description": "최종 적용할 New P/N을 입력합니다."},
+    "user_confirmed": {"input_type": "검토 입력", "owner": "사용자", "description": "최종 적용할 행이면 Y를 입력합니다."},
+    "expected_vi_amount_usd": {"input_type": "자동 생성", "owner": "시스템", "description": "최종 집계 단계에서 계산되면 참고용으로 보여줍니다."},
+    "vi_item_name": {"input_type": "자동 생성", "owner": "시스템", "description": "요청을 구분하는 VI 아이템명입니다."},
+    "base_bom_total_model_count": {"input_type": "자동 생성", "owner": "시스템", "description": "선택한 Base BOM 전체의 모델 수입니다."},
+    "item_target_model_count": {"input_type": "자동 생성", "owner": "시스템", "description": "해당 요청 범위의 대상 모델 수입니다."},
+    "recommended_model_count": {"input_type": "자동 생성", "owner": "시스템", "description": "해당 추천 Base P/N이 걸린 모델 수입니다."},
+    "recommended_model_share_pct": {"input_type": "자동 생성", "owner": "시스템", "description": "해당 추천 Base P/N 사용 비중입니다."},
+    "recommendation_reason": {"input_type": "자동 생성", "owner": "시스템", "description": "추천 근거입니다."},
+}
+
 
 def ensure_runtime_package(module_name: str, package_name: str) -> None:
     try:
@@ -1415,7 +1558,7 @@ class VIReportGUI:
         if output_path.suffix.lower() != ".xlsx":
             output_path = output_path.with_suffix(".xlsx")
 
-        self._write_scenario_template(output_path)
+        self._write_scenario_template_v2(output_path)
         self._set_selected_path("scenario_path", self.scenario_path_var, output_path)
         self._refresh_default_paths(force=False)
         open_workbook_for_review(output_path)
@@ -1467,6 +1610,91 @@ class VIReportGUI:
                     "spec_contains_any": "",
                     "parent_assy_desc_contains_any": "",
                     "note": "예시 요청 행",
+                }
+            ],
+        )
+
+        sample_volume = _build_template_sample_frame(
+            scenario_template_columns["Volume"],
+            [
+                {
+                    "month": "2026-05",
+                    "subsidiary": "BRAZIL",
+                    "model_suffix": "EXAMPLEMODEL01",
+                    "production_qty": 100,
+                }
+            ],
+        )
+
+        empty_recommendation_result = pd.DataFrame(columns=scenario_template_columns["BasePN_Recommendation_Result"])
+
+        with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
+            readme.to_excel(writer, sheet_name="README", index=False)
+            input_guide.to_excel(writer, sheet_name="InputGuide", index=False)
+            _friendly_template_frame(sample_request, "BasePN_Recommendation_Request").to_excel(
+                writer,
+                sheet_name="BasePN_Recommendation_Request",
+                index=False,
+            )
+            _friendly_template_frame(empty_recommendation_result, "BasePN_Recommendation_Result").to_excel(
+                writer,
+                sheet_name="BasePN_Recommendation_Result",
+                index=False,
+            )
+            _friendly_template_frame(sample_volume, "Volume").to_excel(
+                writer,
+                sheet_name="Volume",
+                index=False,
+            )
+            for worksheet in writer.book.worksheets:
+                worksheet.freeze_panes = "A2"
+                if worksheet.title in scenario_template_columns:
+                    _apply_template_header_styles(worksheet, worksheet.title)
+                _auto_fit_openpyxl_worksheet(worksheet)
+
+    def _write_scenario_template_v2(self, output_path: Path) -> None:
+        readme = pd.DataFrame(
+            [
+                {
+                    "항목": "사용 순서",
+                    "설명": "1) BasePN_Recommendation_Request 입력  2) Volume 입력  3) 추천 실행  4) BasePN_Recommendation_Result에서 사용 여부 / 확정 New P/N 검토 입력  5) 최종 집계 실행",
+                },
+                {
+                    "항목": "필수 시트",
+                    "설명": "BasePN_Recommendation_Request, Volume",
+                },
+                {
+                    "항목": "추천 결과 시트",
+                    "설명": "BasePN_Recommendation_Result는 추천 실행 후 모델 + 컨텍스트 기준으로 자동 채워집니다. 사용자는 '사용 여부', '확정 New P/N'만 검토 입력하면 됩니다.",
+                },
+                {
+                    "항목": "헤더 색상 의미",
+                    "설명": "진한 빨강=필수 입력, 연파랑=조건/선택 입력, 회색=자동 생성, 주황=검토 입력",
+                },
+                {
+                    "항목": "주의",
+                    "설명": "새 템플릿에는 VI_Item_Master 시트가 없습니다. vi_item_id는 내부에서 자동 생성됩니다. 헤더명은 유지하고 데이터만 입력하세요.",
+                },
+            ]
+        )
+        input_guide = _build_scenario_input_guide()
+
+        sample_request = _build_template_sample_frame(
+            scenario_template_columns["BasePN_Recommendation_Request"],
+            [
+                {
+                    "vi_item_name": "",
+                    "enabled": "Y",
+                    "subsidiary": "ALL",
+                    "base_part_no": "",
+                    "new_part_no": "",
+                    "model_type": "",
+                    "indoor_tool": "",
+                    "desc_match_mode": "OR",
+                    "desc_contains_any": "COMPRESSOR",
+                    "spec_contains_any": "",
+                    "parent_assy_desc_contains_any": "",
+                    "note": "필수 입력 컬럼을 먼저 채운 뒤 추천 실행",
                 }
             ],
         )

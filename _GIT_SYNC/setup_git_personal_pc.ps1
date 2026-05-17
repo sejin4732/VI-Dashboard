@@ -5,7 +5,7 @@ function Write-Step {
     Write-Host "[SETUP] $Message" -ForegroundColor Cyan
 }
 
-$projectRoot = $PSScriptRoot
+$projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $projectRoot
 
 $gitCommand = Get-Command git -ErrorAction SilentlyContinue
@@ -39,8 +39,9 @@ else {
 }
 
 Write-Step ".gitignore 기준으로 소스 파일만 stage 합니다."
-git add .gitignore requirements.txt config.cloud.example.json README_DEV_SYNC.md setup_git_personal_pc.ps1 update_cloud_pc.ps1 | Out-Host
-git add *.py *.md *.txt *.json *.ps1 2>$null | Out-Null
+git add .gitignore requirements.txt | Out-Host
+git add _GIT_SYNC/config.cloud.example.json _GIT_SYNC/README_DEV_SYNC.md _GIT_SYNC/setup_git_personal_pc.ps1 _GIT_SYNC/update_cloud_pc.ps1 | Out-Host
+git add *.py *.md *.txt *.json 2>$null | Out-Null
 git add dashboard compat_imports workflow 2>$null | Out-Host
 
 $hasCommit = $false
@@ -51,7 +52,7 @@ if ($LASTEXITCODE -eq 0) {
 
 if (-not $hasCommit) {
     Write-Step "첫 커밋을 생성합니다."
-    git commit -m "Initial source commit" | Out-Host
+    git commit -m "Initial VICT source setup" | Out-Host
 }
 else {
     Write-Step "기존 저장소입니다. 필요하면 직접 commit 해주세요."

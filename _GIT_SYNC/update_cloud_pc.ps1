@@ -5,7 +5,7 @@ function Write-Step {
     Write-Host "[CLOUD] $Message" -ForegroundColor Cyan
 }
 
-$projectRoot = $PSScriptRoot
+$projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $projectRoot
 
 $gitCommand = Get-Command git -ErrorAction SilentlyContinue
@@ -16,13 +16,13 @@ if (-not $gitCommand) {
 
 $pythonCommand = Get-Command python -ErrorAction SilentlyContinue
 if (-not $pythonCommand) {
-    Write-Host "python 명령을 찾을 수 없습니다. Python을 설치하거나 PATH를 확인해 주세요." -ForegroundColor Red
+    Write-Host "python 명령을 찾을 수 없습니다. Python 설치 또는 PATH를 확인해 주세요." -ForegroundColor Red
     exit 1
 }
 
 if (-not (Test-Path (Join-Path $projectRoot ".git"))) {
     Write-Host "이 폴더는 아직 clone 되지 않았습니다." -ForegroundColor Yellow
-    Write-Host "먼저 아래처럼 실행해 주세요:"
+    Write-Host "먼저 아래처럼 실행해 주세요."
     Write-Host "git clone <REPO_URL> VICT"
     exit 1
 }
