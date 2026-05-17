@@ -1,0 +1,9 @@
+pandas
+openpyxl
+xlsxwriter
+duckdb
+pyarrow
+streamlit
+plotly
+pillow
+pyinstaller

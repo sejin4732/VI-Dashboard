@@ -1,0 +1,8 @@
+{
+  "app_version": "0.1.0",
+  "data_root": "D:/VICT_DATA/data",
+  "bom_lake_root": "D:/VICT_DATA/bom_lake",
+  "cache_root": "D:/VICT_DATA/cache",
+  "output_root": "D:/VICT_DATA/outputs",
+  "log_root": "D:/VICT_DATA/logs"
+}
